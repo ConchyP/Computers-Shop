@@ -16,14 +16,14 @@ El programa debe poseer métodos que permitan:
 - Agregar un computador a la tienda.
 - Eliminar un computador de la tienda dada su marca.
 - Buscar un computador en la tienda dada su marca.
--Listar la información de todos los computadores que tiene la tienda.
+- Listar la información de todos los computadores que tiene la tienda.
 
 Requisitos:
-Diagrama UML de clases
-Tests unitarios obligatorios (cobertura mínima 70%)
+- Diagrama UML de clases
+- Tests unitarios obligatorios (cobertura mínima 70%)
 
 ## Diagrama de clases 
 
 
 
-## Cobertura testing
+## % Cobertura testing
