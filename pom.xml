@@ -33,12 +33,24 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    <groupId>org.hamcrest</groupId>
+    <artifactId>hamcrest-library</artifactId>
+    <version>2.2</version>
+    <scope>test</scope>
+</dependency>
   </dependencies>
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
+  
+    <dependency>
+      <groupId>foundation.icon</groupId>
+      <artifactId>javaee-scorex</artifactId>
+      <version>0.5.4.1</version>
+    </dependency>
         <version>${maven-enforcer-plugin.version}</version>
         <executions>
           <execution>
