@@ -19,7 +19,7 @@ public class ComputerTest {
         Computer computer2 = new Computer(0, "HP", 32, "AMD Ryzen 5", "Linux", 1200.0);
         assertThat(computer1.getId(), not(equalTo(computer2.getId())));
     }
-
+    
     @Test
     void testGetMemory() {
         Computer computer = new Computer(0, "Dell", 16, "Intel i7", "Windows", 1000.0);

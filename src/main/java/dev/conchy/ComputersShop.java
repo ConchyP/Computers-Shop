@@ -15,7 +15,7 @@ public class ComputersShop {
         this.shopName = shopName;
         this.owner = owner;
         this.taxId = taxId;
-        this.computers = new ArrayList<>();
+        this.computers = new ArrayList<>(computers);
     }
 
     public String getShopName() {

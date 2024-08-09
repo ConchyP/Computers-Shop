@@ -1,64 +1,83 @@
 package dev.conchy;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 
 public class InventoryTest {
 
     private Inventory inventory;
     private Computer computer1;
     private Computer computer2;
-    private Computer computer3;
 
     @BeforeEach
     void setUp() {
         inventory = new Inventory();
         computer1 = new Computer(1, "HP", 16, "Intel i7", "Windows", 1000.0);
         computer2 = new Computer(2, "Dell", 16, "Intel i7", "Windows", 1200.0);
-        computer3 = new Computer(3, "HP", 32, "AMD Ryzen 5", "Linux", 1500.0);
-        inventory.addComputer(computer1);
-        inventory.addComputer(computer2);
     }
 
     @Test
     void testAddComputer() {
-        inventory.addComputer(computer3);
-        assertThat(inventory.getComputers(), hasItem(computer3));
+        inventory.addComputer(computer1);
+        inventory.addComputer(computer2);
+
+       
+        assertThat(inventory.getComputers(), hasSize(2));
+        assertThat(inventory.getComputers(), hasItems(computer1, computer2));
     }
 
     @Test
     void testRemoveComputerByBrand() {
+        inventory.addComputer(computer1);
+        inventory.addComputer(computer2);
+
         inventory.removeComputerByBrand("HP");
-        assertThat(inventory.getComputers(), not(hasItem(computer1)));
-        assertThat(inventory.getComputers(), not(hasItem(computer3)));
+
+    
+        assertThat(inventory.getComputers(), hasSize(1));
+        assertThat(inventory.getComputers(), contains(computer2));
     }
 
     @Test
     void testRemoveComputerById() {
+        inventory.addComputer(computer1);
+        inventory.addComputer(computer2);
+
         inventory.removeComputerById(1);
-        assertThat(inventory.getComputers(), not(hasItem(computer1)));
+
+        assertThat(inventory.getComputers(), hasSize(1));
+        assertThat(inventory.getComputers(), contains(computer2));
     }
 
     @Test
     void testFindComputerByBrand() {
+        inventory.addComputer(computer1);
+        inventory.addComputer(computer2);
+
         Computer foundComputer = inventory.findComputerByBrand("Dell");
-        assertThat(foundComputer, is(computer2));
+        assertThat(foundComputer, is(equalTo(computer2)));
     }
 
     @Test
     void testFindComputerByBrandNotFound() {
-        Computer foundComputer = inventory.findComputerByBrand("Apple");
+        inventory.addComputer(computer1);
+        Computer foundComputer = inventory.findComputerByBrand("Dell");
         assertThat(foundComputer, is(nullValue()));
     }
 
     @Test
-    void testListAllComputers() {
-        inventory.addComputer(computer3);
-        List<Computer> expectedComputers = List.of(computer1, computer2, computer3);
-        assertThat(inventory.getComputers(), containsInAnyOrder(expectedComputers.toArray()));
+    void testListAllComputersWhenEmpty() {
+        inventory.listAllComputers();
+    }
+
+    @Test
+    void testListAllComputersWithContent() {
+        inventory.addComputer(computer1);
+        inventory.addComputer(computer2);
+        inventory.listAllComputers();
     }
 }
