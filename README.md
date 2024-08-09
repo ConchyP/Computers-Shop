@@ -24,6 +24,8 @@ Requisitos:
 
 ## Diagrama de clases 
 
-
+![Captura de pantalla 2024-08-09 231506](https://github.com/user-attachments/assets/e72ef401-b1a0-4243-acdd-3ac0259006ea)
 
 ## % Cobertura testing
+
+![image](https://github.com/user-attachments/assets/e2bf5ec8-5f45-4e75-a164-0a2f144e885b)
